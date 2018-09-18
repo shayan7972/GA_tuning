@@ -93,11 +93,11 @@ class GATuning(Env):
         population = POPULATION_SIZE[col]
 
         process = subprocess.Popen(
-            ['java', '-jar', 'C:/Users/Shayan Z/Downloads/Tutorial_Stack/Tutorial_Stack/evosuite-1.0.6.jar',
-             '-class', 'tutorial.Stack', '-projectCP', 'target/classes',
+            ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
+             '-target', 'tullibee.jar',
               '-Dcrossover_rate={}'.format(crossover), '-Dpopulation={}'.format(population),
              '-Dsearch_budget=20', '-Dshow_progress=False'],
-            cwd='C:/Users/Shayan Z/Downloads/Tutorial_Stack/Tutorial_Stack')
+            cwd='/home/ubuntu/SF100/1_tullibee')
         process.wait()
         # process = subprocess.Popen(
         #     ['java', '-jar', 'C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee/evosuite-1.0.6.jar',
@@ -106,7 +106,7 @@ class GATuning(Env):
         #      '-Dsearch_budget=20', '-Doutput_variables=BranchCoverage', '-Dshow_progress=False'],
         #     cwd='C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee')
         file = pd.read_csv(
-            'C:/Users/Shayan Z/Downloads/Tutorial_Stack/Tutorial_Stack/evosuite-report/statistics.csv')
+            '/home/ubuntu/SF100/1_tullibee/evosuite-report/statistics.csv')
         r, c= file.shape
         total_array = file.at[r-1, 'Total_Goals']
         print(total_array)
