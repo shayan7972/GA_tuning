@@ -19,8 +19,12 @@ for i in range(0,-7,-1):
 SELECTION_STRATEGY = ['RANK', 'ROULETTEWHEEL', 'TOURNAMENT', 'BINARY_TOURNAMENT']
 
 
-def branch_coverage(population_size, crossover_rate, mutation_rate, selection_strategy):
+def branch_coverage(indices, i):
 
+    population_size= POPULATION[indices[0][i]]
+    crossover_rate= CROSSOVER_RATE[indices[1][i]]
+    mutation_rate= MUTATION_RATE[indices[2][i]]
+    selection_strategy= SELECTION_STRATEGY[indices[3][i]]
     process = subprocess.Popen(
         ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
          '-target', 'tullibee.jar',
@@ -52,15 +56,15 @@ def get_fitness(pred): return pred + 1e-3 - np.min(pred)
 def translateDNA(pop):
     state = pop.dot(2 ** np.arange(DNA_SIZE)[::-1])
     population_size_index = state%16
-    population_size = POPULATION[population_size_index]
+    #population_size = POPULATION[population_size_index]
 
     state = state//16
     crossover_rate_index = state%16
-    crossover_rate = CROSSOVER_RATE[crossover_rate_index]
+    #crossover_rate = CROSSOVER_RATE[crossover_rate_index]
 
     state = state//16
     mutation_rate_index = state%8
-    mutation_rate = MUTATION_RATE[mutation_rate_index]
+    #mutation_rate = MUTATION_RATE[mutation_rate_index]
 
     #state = state//8
     #generation_gap_index = state%8
@@ -72,8 +76,10 @@ def translateDNA(pop):
 
     state = state//8
     selection_strategy_index = state
-    selection_strategy = SELECTION_STRATEGY[selection_strategy_index]
-    return population_size, crossover_rate, mutation_rate, selection_strategy
+    #selection_strategy = SELECTION_STRATEGY[selection_strategy_index]
+    
+    indices = [population_size_index, crossover_rate_index, mutation_rate_index, selection_strategy_index]
+    return indices
 
 
 def select(pop, fitness):    # nature selection wrt pop's fitness
@@ -101,7 +107,9 @@ pop = np.random.randint(2, size=(POP_SIZE, DNA_SIZE))   # initialize the pop DNA
 
 
 for _ in range(N_GENERATIONS):
-    F_values = branch_coverage(translateDNA(pop))    # compute function value by extracting DNA
+    indices = translateDNA(pop)
+    for i in range(POP_SIZE)
+    F_values[i] = branch_coverage(indices,i)    # compute function value by extracting DNA
 
 
     # GA part (evolution)
