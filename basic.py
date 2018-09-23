@@ -29,7 +29,7 @@ def branch_coverage(indices, i):
         ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
          '-target', 'tullibee.jar',
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
-         '-Dmutation_rate={}'.format(mutation_rate), '-Dselection_function'.format(selection_strategy),
+         '-Dmutation_rate={}'.format(mutation_rate),
          '-Dsearch_budget=20', '-Dshow_progress=False'],
         cwd='/home/ubuntu/SF100/1_tullibee')
     process.wait()
