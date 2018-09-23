@@ -40,7 +40,7 @@ def branch_coverage(indices, i):
     #      '-Dsearch_budget=20', '-Doutput_variables=BranchCoverage', '-Dshow_progress=False'],
     #     cwd='C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee')
     file = pd.read_csv(
-        '/home/ubuntu/SF100/1_tullibee/evosuite-report/statistics.csv')
+        '/home/ubuntu/SF100/1_tullibee/evosuite-files/evosuite-report/statistics.csv')
     r, c = file.shape
     total_array = file.at[r - 1, 'Total_Goals']
     print(total_array)
@@ -56,27 +56,21 @@ def get_fitness(pred): return pred + 1e-3 - np.min(pred)
 def translateDNA(pop):
     state = pop.dot(2 ** np.arange(DNA_SIZE)[::-1])
     population_size_index = state%16
-    #population_size = POPULATION[population_size_index]
 
     state = state//16
     crossover_rate_index = state%16
-    #crossover_rate = CROSSOVER_RATE[crossover_rate_index]
 
     state = state//16
     mutation_rate_index = state%8
-    #mutation_rate = MUTATION_RATE[mutation_rate_index]
 
     #state = state//8
     #generation_gap_index = state%8
-    #generation_gap = GENERATION_GAP[generation_gap_index]
 
     #state = state//8
     #scaling_window_index = state%8
-    #scaling_window = SCALING_WINDOW[scaling_window_index]
 
     state = state//8
     selection_strategy_index = state
-    #selection_strategy = SELECTION_STRATEGY[selection_strategy_index]
     
     indices = [population_size_index, crossover_rate_index, mutation_rate_index, selection_strategy_index]
     return indices
