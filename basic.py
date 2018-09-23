@@ -1,7 +1,6 @@
 import subprocess
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 DNA_SIZE = 13            # DNA length
 POP_SIZE = 100           # population size
