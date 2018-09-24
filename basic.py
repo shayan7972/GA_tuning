@@ -117,7 +117,7 @@ for _ in range(N_GENERATIONS):
     for i in range(POP_SIZE):
         F_values.append(branch_coverage(indices,i))    # compute function value by extracting DNA
 
-    F_val = array(F_values)
+    F_val = np.array(F_values)
     # GA part (evolution)
     fitness = get_fitness(F_val)
     print("Most fitted DNA: ", pop[np.argmax(fitness), :])
