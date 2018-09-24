@@ -25,7 +25,6 @@ def branch_coverage(indices, i):
     crossover_rate= CROSSOVER_RATE[indices[1][i]]
     mutation_rate= MUTATION_RATE[indices[2][i]]
     selection_strategy= SELECTION_STRATEGY[indices[3][i]
-    print ('*************************** test:')
     print(str(population_size))
     print(str(crossover_rate))
     print(str(mutation_rate))
