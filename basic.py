@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 
 DNA_SIZE = 13            # DNA length
-POP_SIZE = 100           # population size
+POP_SIZE = 10           # population size
 CROSS_RATE = 0.8         # mating probability (DNA crossover)
 MUTATION_RATE_META = 0.003    # mutation probability
-N_GENERATIONS = 200
+N_GENERATIONS = 10
 
 
 POPULATION = np.arange(10,170,10)
