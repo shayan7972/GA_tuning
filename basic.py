@@ -42,7 +42,7 @@ def branch_coverage(indices, i):
          '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar','-class', 'com.ib.client.EClientErrors',
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
          '-Dmutation_rate={}'.format(mutation_rate), '-Dselection_function={}'.format(selection_strategy),
-         '-Dshow_progress=False', '-criterion', 'branch'])
+         '-Dshow_progress=False', '-criterion', 'branch','-Doutput_variables=TARGET_CLASS,criterion,Size,Length,MutationScore'])
     process.wait()
     # process = subprocess.Popen(
     #     ['java', '-jar', 'C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee/evosuite-1.0.6.jar',
