@@ -25,7 +25,7 @@ print(CROSSOVER_RATE)
 SELECTION_STRATEGY = ['RANK', 'ROULETTEWHEEL', 'TOURNAMENT', 'BINARY_TOURNAMENT']
 
 
-def branch_coverage(indices, i):
+def branch_coverage(indices, i, generation):
 
     population_size= POPULATION[indices[0][i]]
     crossover_rate= CROSSOVER_RATE[indices[1][i]]
@@ -37,7 +37,7 @@ def branch_coverage(indices, i):
     print(mutation_rate)
     print(selection_strategy)
     print('**************')
-    counter = i+1
+    counter = (i+1) + generation*POP_SIZE
     process = subprocess.Popen(
         ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
          '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar','-class', 'com.ib.client.EClientErrors',
@@ -106,7 +106,7 @@ for _ in range(N_GENERATIONS):
     indices = translateDNA(pop)
     F_values=[]
     for i in range(POP_SIZE):
-        F_values.append(branch_coverage(indices,i))    # compute function value by extracting DNA
+        F_values.append(branch_coverage(indices,i,_))    # compute function value by extracting DNA
 
     F_val = np.array(F_values)
     # GA part (evolution)
