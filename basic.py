@@ -37,29 +37,19 @@ def branch_coverage(indices, i):
     print(mutation_rate)
     print(selection_strategy)
     print('**************')
+    counter = i+1
     process = subprocess.Popen(
         ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
          '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar','-class', 'com.ib.client.EClientErrors',
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
          '-Dmutation_rate={}'.format(mutation_rate), '-Dselection_function={}'.format(selection_strategy),
-         '-Dshow_progress=False', '-criterion', 'branch','-Doutput_variables=TARGET_CLASS,criterion,Size,Length,MutationScore'])
+         '-Dshow_progress=False', '-criterion', 'branch','-Doutput_variables=TARGET_CLASS,criterion,Size,Length,MutationScore'
+         '-Dreport_dir=/home/ubuntu/rltuning/{}'.format(counter)])
     process.wait()
-    # process = subprocess.Popen(
-    #     ['java', '-jar', 'C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee/evosuite-1.0.6.jar',
-    #      '-target', 'tullibee.jar',
-    #      '-criterion', 'branch', '-Dcrossover_rate={}'.format(crossover), '-Dpopulation={}'.format(population),
-    #      '-Dsearch_budget=20', '-Doutput_variables=BranchCoverage', '-Dshow_progress=False'],
-    #     cwd='C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee')
-    file = pd.read_csv(
-        '/home/ubuntu/SF100/1_tullibee/evosuite-files/evosuite-report/statistics.csv')
-    r, c = file.shape
-    total_array = file.at[r - 1, 'Total_Goals']
-    print(total_array)
-    covered_array = file.at[r - 1, 'Covered_Goals']
-    print(covered_array)
-    coverage = covered_array / total_array
-    print(coverage)
-    return coverage
+    file = pd.read_csv('/home/ubuntu/rltuning/{}/statistics.csv'.format(counter))
+    mutation_score = (file["MutationScore"] * file["Size"]).sum() / file["Size"].sum()
+    print(mutation_score)
+    return mutation_score
 
 
 # find non-zero fitness for selection
