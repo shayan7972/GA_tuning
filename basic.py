@@ -10,7 +10,7 @@ N_GENERATIONS = 200
 
 
 POPULATION = np.arange(10,160,10)
-CROSSOVER_RATE = np.arange(0.25,1,0.05)
+CROSSOVER_RATE = np.arange(0.25,1.05,0.05)
 MUTATION_RATE = [0]
 for i in range(0,-7,-1):
     MUTATION_RATE.append(2**i)
