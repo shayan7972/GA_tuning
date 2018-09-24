@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 
 DNA_SIZE = 13            # DNA length
-POP_SIZE = 10           # population size
+POP_SIZE = 5           # population size
 CROSS_RATE = 0.8         # mating probability (DNA crossover)
 MUTATION_RATE_META = 0.003    # mutation probability
-N_GENERATIONS = 10
+N_GENERATIONS = 2
 
 
 POPULATION = np.arange(10,170,10)
@@ -114,9 +114,9 @@ for _ in range(N_GENERATIONS):
     for i in range(POP_SIZE):
         F_values.append(branch_coverage(indices,i))    # compute function value by extracting DNA
 
-
+    F_val = array(F_values)
     # GA part (evolution)
-    fitness = get_fitness(F_values)
+    fitness = get_fitness(F_val)
     print("Most fitted DNA: ", pop[np.argmax(fitness), :])
     pop = select(pop, fitness)
     pop_copy = pop.copy()
