@@ -43,7 +43,7 @@ def branch_coverage(indices, i):
          '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar','-class', 'com.ib.client.EClientErrors',
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
          '-Dmutation_rate={}'.format(mutation_rate), '-Dselection_function={}'.format(selection_strategy),
-         '-Dshow_progress=False', '-criterion', 'branch','-Doutput_variables=TARGET_CLASS,criterion,Size,Length,MutationScore'
+         '-Dshow_progress=False', '-criterion', 'branch','-Doutput_variables=TARGET_CLASS,criterion,Size,Length,MutationScore',
          '-Dreport_dir=/home/ubuntu/rltuning/{}'.format(counter)])
     process.wait()
     file = pd.read_csv('/home/ubuntu/rltuning/{}/statistics.csv'.format(counter))
