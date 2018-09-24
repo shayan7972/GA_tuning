@@ -32,7 +32,7 @@ def branch_coverage(indices, i):
     print('**************')
     process = subprocess.Popen(
         ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
-         '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar',
+         '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar','-class', 'com.ib.client.EClientErrors',
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
          '-Dmutation_rate={}'.format(mutation_rate),
          '-Dsearch_budget=20', '-Dshow_progress=False', '-criterion', 'branch'])
@@ -105,11 +105,11 @@ def mutate(child):
 
 pop = np.random.randint(2, size=(POP_SIZE, DNA_SIZE))   # initialize the pop DNA
 
-
+F_values=[]
 for _ in range(N_GENERATIONS):
     indices = translateDNA(pop)
     for i in range(POP_SIZE):
-        F_values[i] = branch_coverage(indices,i)    # compute function value by extracting DNA
+        F_values.append(branch_coverage(indices,i))    # compute function value by extracting DNA
 
 
     # GA part (evolution)
