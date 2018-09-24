@@ -111,9 +111,9 @@ def mutate(child):
 
 pop = np.random.randint(2, size=(POP_SIZE, DNA_SIZE))   # initialize the pop DNA
 
-F_values=[]
 for _ in range(N_GENERATIONS):
     indices = translateDNA(pop)
+    F_values=[]
     for i in range(POP_SIZE):
         F_values.append(branch_coverage(indices,i))    # compute function value by extracting DNA
 
