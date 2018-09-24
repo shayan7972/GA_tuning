@@ -1,6 +1,9 @@
 import subprocess
 import pandas as pd
 import numpy as np
+from array import array
+
+
 
 DNA_SIZE = 13            # DNA length
 POP_SIZE = 5           # population size
