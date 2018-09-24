@@ -30,7 +30,7 @@ def branch_coverage(indices, i):
          '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar',
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
          '-Dmutation_rate={}'.format(mutation_rate),
-         '-Dsearch_budget=20', '-Dshow_progress=False'])
+         '-Dsearch_budget=20', '-Dshow_progress=False', '-Doutput_variables=BranchCoverage'])
     process.wait()
     # process = subprocess.Popen(
     #     ['java', '-jar', 'C:/Users/Shayan Z/Downloads/SF100-EvoSuite-20120316/1_tullibee/evosuite-1.0.6.jar',
