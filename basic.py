@@ -49,6 +49,7 @@ def branch_coverage(indices, i, generation):
     file = pd.read_csv('/home/ubuntu/rltuning/{}/statistics.csv'.format(counter))
     mutation_score = (file["MutationScore"] * file["Size"]).sum() / file["Size"].sum()
     print(mutation_score)
+    
     return mutation_score
 
 
@@ -101,7 +102,7 @@ def mutate(child):
 
 
 pop = np.random.randint(2, size=(POP_SIZE, DNA_SIZE))   # initialize the pop DNA
-
+Best =[]
 for _ in range(N_GENERATIONS):
     indices = translateDNA(pop)
     F_values=[]
@@ -113,6 +114,7 @@ for _ in range(N_GENERATIONS):
     fitness = get_fitness(F_val)
     print("Most fitted DNA: ", pop[np.argmax(fitness), :])
     print("Most fitted DNA Translation: ", translateDNA(pop[np.argmax(fitness), :]))
+    Best.append(np.argmax(F_val))
     pop = select(pop, fitness)
     pop_copy = pop.copy()
     for parent in pop:
@@ -120,3 +122,4 @@ for _ in range(N_GENERATIONS):
         child = mutate(child)
         parent[:] = child       # parent is replaced by its child
     print('iteration number:', _)
+print(Best)
