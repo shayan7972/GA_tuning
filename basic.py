@@ -24,11 +24,7 @@ def branch_coverage(indices, i):
     population_size= POPULATION[indices[0][i]]
     crossover_rate= CROSSOVER_RATE[indices[1][i]]
     mutation_rate= MUTATION_RATE[indices[2][i]]
-    selection_strategy= SELECTION_STRATEGY[indices[3][i]
-    print(str(population_size))
-    print(str(crossover_rate))
-    print(str(mutation_rate))
-    print ('*************************** test:')                                       
+    selection_strategy= SELECTION_STRATEGY[indices[3][i]                                    
     process = subprocess.Popen(
         ['java', '-jar', '/home/ubuntu/evosuite-1.0.6.jar',
          '-target', '/home/ubuntu/SF100/1_tullibee/tullibee.jar',
