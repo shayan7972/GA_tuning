@@ -6,10 +6,10 @@ from array import array
 
 
 DNA_SIZE = 13            # DNA length
-POP_SIZE = 5           # population size
+POP_SIZE = 50           # population size
 CROSS_RATE = 0.8         # mating probability (DNA crossover)
 MUTATION_RATE_META = 0.003    # mutation probability
-N_GENERATIONS = 2
+N_GENERATIONS = 10
 
 
 POPULATION = np.arange(10,170,10)
@@ -44,9 +44,9 @@ def branch_coverage(indices, i, generation):
          '-Dcrossover_rate={}'.format(crossover_rate), '-Dpopulation={}'.format(population_size),
          '-Dmutation_rate={}'.format(mutation_rate), '-Dselection_function={}'.format(selection_strategy),
          '-Dshow_progress=False', '-criterion', 'branch','-Doutput_variables=TARGET_CLASS,criterion,Size,Length,MutationScore',
-         '-Dreport_dir=/home/ubuntu/rltuning/{}'.format(counter)])
+         '-Dreport_dir=/home/ubuntu/algorithms/results/{}'.format(counter)])
     process.wait()
-    file = pd.read_csv('/home/ubuntu/rltuning/{}/statistics.csv'.format(counter))
+    file = pd.read_csv('/home/ubuntu/algorithms/results/{}/statistics.csv'.format(counter))
     mutation_score = (file["MutationScore"] * file["Size"]).sum() / file["Size"].sum()
     print(mutation_score)
     
